@@ -1,0 +1,1 @@
+export const topologies = ["Mesh", "Star", "Ring", "Bus"];
