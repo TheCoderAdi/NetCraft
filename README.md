@@ -1,36 +1,68 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
-
 ## Getting Started
 
-First, run the development server:
+To run the project locally, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository:
+   ```bash
+    git clone https://github.com/TheCoderAdi/NetCraft.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd NetCraft
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the development server:
+   ```bash
+   npm start
+   ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Introduction
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+The **NetCraft** is a dynamic tool designed to visualize and simulate various network topologies. Users can interactively explore different network structures, observe packet transfers, and analyze the performance of each topology.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Usage
 
-## Learn More
+1. Select a network topology from the dropdown menu.
+2. Specify sender and receiver nodes.
+3. Click on "Transfer Packet" to start the simulation.
+4. Observe the packet transfer animation and network statistics.
 
-To learn more about Next.js, take a look at the following resources:
+## Features
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- **Supported Topologies**:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+  - Mesh
+  - Star
+  - Ring
+  - Bus
+  - (Future: Tree, Hybrid, Fully Connected)
 
-## Deploy on Vercel
+## Future Updates
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Interactive File Transfer Simulation**: Visualize packet movements between nodes.
+- **Dynamic Topology Changes**: Add or remove nodes in real-time.
+- **Latency and Performance Simulation**: Analyze network performance.
+- **Network Statistics**: Real-time metrics on network load and efficiency.
+- **Node Failures**: Simulate the impact of node failures.
+- **Custom Styling Options**: Personalize node and connection styles.
+- **Educational Tooltips**: Learn about different topologies and their use cases.
+- **Save and Load Topologies**: Save and share custom network configurations.
+- **Real-Time Collaboration**: Work with others in real-time.
+- **Device Responsiveness**: Fully functional on mobile and tablet devices.
+- **Download Visualizations**: Export network diagrams as images or JSON.
+- **Themed Challenges**: Engage with network design challenges.
+- **Dark Mode**: Switch to a dark theme for better visibility in low light.
+- **Custom Packet Animation**: Customize packet animations for better visualization.
+- **Graphical Comparison**: Compare different topologies side-by-side.
+- **AI-Based Suggestions**: Get recommendations for optimal topologies based on your inputs.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Contributing
+
+We welcome contributions to improve the Network Topology Viewer. Please check out our [contributing guidelines](CONTRIBUTING.md) for more details.
+
+## License
+
+This project is licensed under the MIT License.
