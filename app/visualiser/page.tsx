@@ -421,8 +421,14 @@ const VisualizerPage = () => {
   };
 
   return (
-    <div className="h-screen flex flex-col items-center p-6 text-gray-700">
-      <h1 className="text-4xl font-bold mb-6 text-gray-800">
+    <div
+      className={`h-screen max-w-full flex flex-col items-center p-6 text-gray-700 ${
+        topology === "Bus"
+          ? "max-md:overflow-x-scroll"
+          : "max-md:overflow-x-hidden"
+      }`}
+    >
+      <h1 className="text-4xl font-bold mb-6 text-gray-800 max-sm:text-center max-md:text-3xl">
         Network Topology Visualizer
       </h1>
 
