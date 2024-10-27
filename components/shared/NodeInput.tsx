@@ -3,6 +3,7 @@ import PacketTransferButton from "./PacketTransferButton";
 interface Props {
   sender: number;
   receiver: number;
+  isTransfering: boolean;
   setSender: (e: number) => void;
   setReceiver: (e: number) => void;
   numNodes: number;
@@ -16,6 +17,7 @@ const NodeInput = ({
   setReceiver,
   numNodes,
   handlePacketTransfer,
+  isTransfering,
 }: Props) => (
   <div className="mb-6 flex gap-5 items-center justify-center max-sm:flex-col">
     <div className="flex flex-row gap-5">
@@ -28,6 +30,7 @@ const NodeInput = ({
           className="p-2 border border-gray-400 rounded-lg w-24"
           min="1"
           max={numNodes}
+          disabled={isTransfering}
         />
       </div>
 
@@ -40,6 +43,7 @@ const NodeInput = ({
           className="p-2 border border-gray-400 rounded-lg w-24"
           min="1"
           max={numNodes}
+          disabled={isTransfering}
         />
       </div>
     </div>

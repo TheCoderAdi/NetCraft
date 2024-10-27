@@ -460,6 +460,7 @@ const VisualizerPage = () => {
           className="p-2 border border-gray-400 rounded-lg w-24"
           min="1"
           max="10"
+          disabled={isTransferring}
         />
       </div>
 
@@ -475,6 +476,7 @@ const VisualizerPage = () => {
         setSender={setSender}
         setReceiver={setReceiver}
         numNodes={numNodes}
+        isTransfering={isTransferring}
         handlePacketTransfer={handlePacketTransfer}
       />
       <TopologyVisualizer
