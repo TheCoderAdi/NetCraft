@@ -11,6 +11,7 @@ const VisualizerPage = () => {
   const [sender, setSender] = useState(1);
   const [receiver, setReceiver] = useState(2);
   const [isTransferring, setIsTransferring] = useState(false);
+  const [isReached, setIsReached] = useState(false);
   const [packetPosition, setPacketPosition] = useState({ x: 0, y: 0 });
   const [rejections, setRejections] = useState<number[]>([]);
 
@@ -74,6 +75,11 @@ const VisualizerPage = () => {
                     toast.success(
                       `Packet successfully transferred to Node ${receiver}`
                     );
+                    setIsReached(true);
+
+                    setTimeout(() => {
+                      setIsReached(false);
+                    }, 300);
                   } else {
                     movePacket();
                   }
@@ -138,6 +144,10 @@ const VisualizerPage = () => {
                   toast.success(
                     `Packet successfully transferred to Node ${receiver}`
                   );
+                  setIsReached(true);
+                  setTimeout(() => {
+                    setIsReached(false);
+                  }, 300);
                 } else {
                   setTimeout(transferAlongBackbone, 500);
                 }
@@ -229,6 +239,10 @@ const VisualizerPage = () => {
               toast.success(
                 `Packet successfully transferred to Node ${receiver} from Switch`
               );
+              setIsReached(true);
+              setTimeout(() => {
+                setIsReached(false);
+              }, 300);
             }
           };
 
@@ -261,6 +275,10 @@ const VisualizerPage = () => {
             toast.success(
               `Packet successfully transferred to Node ${receiver}`
             );
+            setIsReached(true);
+            setTimeout(() => {
+              setIsReached(false);
+            }, 300);
           }
         };
         animate();
@@ -280,6 +298,7 @@ const VisualizerPage = () => {
     )
       return toast.error("Invalid node number");
     setIsTransferring(true);
+    setIsReached(false);
     setRejections([]);
   };
 
@@ -456,6 +475,7 @@ const VisualizerPage = () => {
         receiver={receiver}
         packetPosition={packetPosition}
         isTransferring={isTransferring}
+        isReached={isReached}
         rejections={rejections}
       />
     </div>
