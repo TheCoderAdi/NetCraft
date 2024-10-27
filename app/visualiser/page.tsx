@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import { topologies } from "@/lib/constants/data";
 
 const VisualizerPage = () => {
+  const [numNodes, setNumNodes] = useState(5);
   const [topology, setTopology] = useState("Mesh");
   const [sender, setSender] = useState(1);
   const [receiver, setReceiver] = useState(2);
@@ -14,8 +15,6 @@ const VisualizerPage = () => {
   const [isReached, setIsReached] = useState(false);
   const [packetPosition, setPacketPosition] = useState({ x: 0, y: 0 });
   const [rejections, setRejections] = useState<number[]>([]);
-
-  const [numNodes, setNumNodes] = useState(5);
 
   useEffect(() => {
     if (isTransferring) {
