@@ -6,7 +6,6 @@ interface Props {
   renderConnections: () => React.ReactNode;
   getX: (index: number) => number;
   getY: (index: number) => number;
-  sender: number;
   receiver: number;
   packetPosition: { x: number; y: number };
   isTransferring: boolean;
@@ -19,7 +18,6 @@ const TopologyVisualizer = ({
   renderConnections,
   getX,
   getY,
-  sender,
   receiver,
   packetPosition,
   isTransferring,
@@ -29,7 +27,6 @@ const TopologyVisualizer = ({
   <div className="relative mt-8 w-[428px] h-[400px] max-md:w-[600px] max-sm:w-[428px]">
     <svg className="absolute w-[501px] h-[400px]">{renderConnections()}</svg>
     {Array.from({ length: numNodes }, (_, index) => {
-      console.log(sender, receiver);
       return (
         <div
           key={`node-${index}`}
