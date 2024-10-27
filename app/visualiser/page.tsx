@@ -15,7 +15,7 @@ const VisualizerPage = () => {
   const [packetPosition, setPacketPosition] = useState({ x: 0, y: 0 });
   const [rejections, setRejections] = useState<number[]>([]);
 
-  const numNodes = 5;
+  const [numNodes, setNumNodes] = useState(5);
 
   useEffect(() => {
     if (isTransferring) {
@@ -79,6 +79,7 @@ const VisualizerPage = () => {
 
                     setTimeout(() => {
                       setIsReached(false);
+                      setRejections([]);
                     }, 300);
                   } else {
                     movePacket();
@@ -147,6 +148,7 @@ const VisualizerPage = () => {
                   setIsReached(true);
                   setTimeout(() => {
                     setIsReached(false);
+                    setRejections([]);
                   }, 300);
                 } else {
                   setTimeout(transferAlongBackbone, 500);
@@ -242,6 +244,7 @@ const VisualizerPage = () => {
               setIsReached(true);
               setTimeout(() => {
                 setIsReached(false);
+                setRejections([]);
               }, 300);
             }
           };
@@ -278,6 +281,7 @@ const VisualizerPage = () => {
             setIsReached(true);
             setTimeout(() => {
               setIsReached(false);
+              setRejections([]);
             }, 300);
           }
         };
@@ -343,9 +347,9 @@ const VisualizerPage = () => {
 
     return (
       <>
-        {Array.from({ length: 2 }, (_, i) => (
+        {Array.from({ length: numNodes - 1 }, (_, i) => (
           <line
-            key={`star-left-${i}`}
+            key={`star-${i}`}
             x1={centerX}
             y1={centerY}
             x2={getX(i + 1)}
@@ -354,22 +358,9 @@ const VisualizerPage = () => {
             strokeWidth="2"
           />
         ))}
-
-        {Array.from({ length: 2 }, (_, i) => (
-          <line
-            key={`star-right-${i}`}
-            x1={centerX}
-            y1={centerY}
-            x2={getX(i + 3)}
-            y2={getY(i + 3)}
-            stroke="black"
-            strokeWidth="2"
-          />
-        ))}
       </>
     );
   };
-
   const renderRingConnections = () => (
     <>
       {Array.from({ length: numNodes }, (_, i) => (
@@ -417,7 +408,9 @@ const VisualizerPage = () => {
       case "Ring":
         return 200 + 150 * Math.cos((2 * Math.PI * index) / numNodes);
       case "Star":
-        return index === 0 ? 200 : 100 + (index % 2) * 200;
+        return index === 0
+          ? 200
+          : 200 + 150 * Math.cos((2 * Math.PI * index) / (numNodes - 1));
       case "Bus":
         return 100 + index * 100;
       default:
@@ -431,12 +424,19 @@ const VisualizerPage = () => {
       case "Ring":
         return 200 + 150 * Math.sin((2 * Math.PI * index) / numNodes);
       case "Star":
-        return index === 0 ? 200 : index <= 2 ? 100 : 300;
+        return index === 0
+          ? 200
+          : 200 + 150 * Math.sin((2 * Math.PI * index) / (numNodes - 1));
       case "Bus":
         return 200;
       default:
         return 200;
     }
+  };
+
+  const handleNumNodesChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = Math.min(10, Math.max(1, Number(e.target.value)));
+    setNumNodes(value);
   };
 
   return (
@@ -450,6 +450,19 @@ const VisualizerPage = () => {
       <h1 className="text-4xl font-bold mb-6 text-gray-800 max-sm:text-center max-md:text-3xl">
         Network Topology Visualizer
       </h1>
+      <div className="flex items-center justify-center gap-3">
+        <label className="text-lg font-semibold mb-2">
+          Enter Number of Nodes (Max 10):
+        </label>
+        <input
+          type="number"
+          value={numNodes}
+          onChange={handleNumNodesChange}
+          className="p-2 border border-gray-400 rounded-lg w-24"
+          min="1"
+          max="10"
+        />
+      </div>
 
       <TopologySelector
         topology={topology}
@@ -471,7 +484,6 @@ const VisualizerPage = () => {
         renderConnections={renderConnections}
         getX={getX}
         getY={getY}
-        sender={sender}
         receiver={receiver}
         packetPosition={packetPosition}
         isTransferring={isTransferring}
