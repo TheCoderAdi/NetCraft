@@ -449,8 +449,8 @@ const VisualizerPage = () => {
       <h1 className="text-4xl font-bold mb-6 text-gray-800 max-sm:text-center max-md:text-3xl">
         Network Topology Visualizer
       </h1>
-      <div className="flex items-center justify-center gap-3">
-        <label className="text-lg font-semibold mb-2">
+      <div className="flex items-center justify-center gap-3 mb-2">
+        <label className="text-lg font-semibold">
           Enter Number of Nodes (Max 10):
         </label>
         <input
